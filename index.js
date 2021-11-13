@@ -92,6 +92,22 @@ async function run() {
             res.json(myOrders);
         })
 
+        // UPDATE BUTTON SHIPPED/ PUT API
+        app.put('/allOrders/:id', async (req, res) => {
+            const id = req.params.id;
+            const updatedShipped = req.body;
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    status: updatedUser.status,
+                }
+            };
+            const result = await ordersCollection.updateOne(filter, updateDoc, options)
+            console.log('updating pending to shipped', id);
+            res.json(result);
+        })
+
         // DELETE API FOR ORDER
         app.delete('/allOrders/:id', async (req, res) => {
             const id = req.params.id;
