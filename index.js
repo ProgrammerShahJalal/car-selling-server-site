@@ -8,7 +8,7 @@ const admin = require("firebase-admin");
 
 const port = process.env.PORT || 5000;
 
-const serviceAccount = require('./car-selling-website-firebase-adminsdk.json');
+const serviceAccount = JSON.parse(process.env.MY_VAR);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
