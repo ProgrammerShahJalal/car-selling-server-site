@@ -210,6 +210,6 @@ app.get('/', (req, res) => {
     res.send('Car Selling Server is running');
 })
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log('Car Selling is running on the port :', port);
 })
