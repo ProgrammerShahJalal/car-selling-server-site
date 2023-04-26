@@ -153,6 +153,13 @@ async function run() {
             const result = await carsCollection.deleteOne(query);
             res.json(result);
         })
+         // GET SINGLE SERVICE
+        app.get('/cars/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const service = await carsCollection.findOne(query);
+            res.json(service);
+        })
 
         // GET USERS ACCORDING TO EMAIL
         app.get('/users/:email', async (req, res) => {
