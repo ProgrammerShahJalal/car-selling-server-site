@@ -146,6 +146,14 @@ async function run() {
             res.json(result);
         });
 
+         // DELETE API FOR SERVICE
+         app.delete('/cars/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await carsCollection.deleteOne(query);
+            res.json(result);
+        })
+
         // GET USERS ACCORDING TO EMAIL
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
